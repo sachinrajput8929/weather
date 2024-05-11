@@ -5,17 +5,30 @@ const Result = ({ weatherData, historyData }) => {
   // Mapping historyData to create list items
   const historyItems = historyData.map((item, index) => {
     return (
-      <li
-        className="text-center block text-blue-500 font-bold cursor-pointer"
-        key={index}
-      >
-        {item}
+      // <li
+      //   className="text-center block text-blue-500 font-bold cursor-pointer"
+      //   key={index}
+      // >
+      //   {item}
+      // </li>
+      <li class="text-blue-700 font-bold">
+        <a href="#" class="me-4 hover:underline md:me-6" key={index}>
+          {" "}
+          {item}
+        </a>
       </li>
     );
   });
 
   return (
     <>
+      <div class="grid grid-12 gap-4">
+        <div class="max-w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <ul class="flex flex-wrap items-center justify-center text-gray-900 dark:text-white">
+          Recent: {historyItems}
+          </ul>
+        </div>
+      </div>
       {/* Conditional rendering based on weatherData */}
       {weatherData.length !== 0 ? (
         <div className="wrapper">
@@ -93,9 +106,7 @@ const Result = ({ weatherData, historyData }) => {
                     className="rounded-full p-2"
                     src={forecast.day.condition.icon}
                   />
-                  <p className="text-center mb-8">
-                    {forecast.day.avgtemp_c}°c
-                  </p>
+                  <p className="text-center mb-8">{forecast.day.avgtemp_c}°c</p>
                 </div>
               ))}
             </div>
